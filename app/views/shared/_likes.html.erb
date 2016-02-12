@@ -1,0 +1,18 @@
+<% if current_user.likes?(@tweet) %>
+	<p><%= link_to content_tag(:span, "", class: "glyphicon glyphicon-remove"), tweet_like_path(@tweet), method: :delete, class: "btn btn-info", type: "button", :title => "Unlike" %> Unlike</p>
+<% else %>
+	<p><%= link_to content_tag(:span, "", class: "glyphicon glyphicon-ok"), tweet_like_path(@tweet), method: :post, class: "btn btn-info", type: "button", :title => "Like" %> Like</p>
+<% end %>
+
+<p><button type="button" class="btn btn-info">
+  <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+</button>
+<%= @tweet.likes.count %> Likes</p>
+<p><button type="button" class="btn btn-info">
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span></button> Liked by:
+<% @tweet.likes.each do |like| %>
+<%= like.user.username %>
+<br>
+<% end %>
+</p>
+</div>

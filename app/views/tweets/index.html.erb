@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="span7 container">
+<h3>Twitter Feed</h3>
+	
+	<% @tweets.each do |tweet| %>
+<div class="col-md-11">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong><%= tweet.user.name %></strong>
+				<%= tweet.user.username %><small> tweeted <%=time_ago_in_words(tweet.created_at) %> ago</small></div>
+				<div class="panel-body">
+					<%= tweet.message %><br><br>
+				<small>
+				<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-eye-open"), tweet, class: "btn btn-info", type: "button" %>
+				<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-edit"), edit_tweet_path(tweet), class: "btn btn-info", type: "button" %>
+				<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-erase"), tweet, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-info", type: "button" %>
+				<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-option-horizontal"), tweet, class: "btn btn-info", type: "button" %>
+				</small>
+				</div>
+		</div>
+</div>
+	<% end %>
+<%= link_to 'New Tweet', new_tweet_path, class: "btn btn-default" %>
+</div>

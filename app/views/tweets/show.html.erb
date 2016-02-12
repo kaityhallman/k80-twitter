@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+<div class="col-md-11">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="left">
+				<h3><%= @tweet.user.name %></h3>
+				<h5><%= @tweet.user.username %></h5>
+				</div>
+			<div class="right">
+				<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-edit"), edit_tweet_path(@tweet), class: "btn btn-info", type: "button" %>
+				<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-share-alt"), tweets_url, class: "btn btn-info", type: "button" %>
+			</div>
+			<div class="clear-both">
+				<h2 id="tweet"><%= @tweet.message %></h2>
+				<br><br>
+				<%= render 'shared/likes' %>
+			</div>
+
+		</div>
+	</div>
+
+
+</div>
+</div>
